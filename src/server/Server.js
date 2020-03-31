@@ -5,9 +5,13 @@ import express from 'express';
 import meddleware from 'meddleware';
 import handlers from 'shortstop-handlers';
 import shortstopRegex from 'shortstop-regex';
+import { ApolloServer } from 'apollo-server-express';
 import 'fetch-everywhere';
 import readConfiguration from '../lib/utils/readConfiguration.js';
 import betterRequire from '../lib/utils/betterRequire'
+import typeDefs from '../graphql/server/typeDefs';
+import resolvers from '../graphql/server/resolvers';
+import { models, db } from '../graphql/server/models';
 
 export default class Server {
   constructor() {
@@ -73,6 +77,19 @@ export default class Server {
       }));
       this.app.use(require('webpack-hot-middleware')(compiler));
     }
+
+    // Configure ApolloServer to run GraphQL queries
+    const apolloServer = new ApolloServer({
+      typeDefs,
+      resolvers,
+      context() {
+        return { models, db }
+      },
+    });
+    apolloServer.applyMiddleware({
+      app: this.app,
+      path: '/graphql',
+    });
 
     const middleware = config.get('meddleware');
     if (middleware) {
