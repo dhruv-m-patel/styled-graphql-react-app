@@ -1,12 +1,9 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import path from 'path';
-import { Provider } from 'react-redux';
 import { StaticRouter } from 'react-router-dom';
 import { ChunkExtractor } from '@loadable/server'
 import { ServerStyleSheet, StyleSheetManager } from 'styled-components';
-import configureStore from '../../client/redux/configureStore';
-import { DEFAULT_STATE } from '../../client/redux/reducers';
 import Router from '../../common/router';
 
 export default function () {
@@ -17,20 +14,12 @@ export default function () {
       return;
     }
 
-    const store = configureStore(req.initialState || DEFAULT_STATE);
-    const preloadedState = req.initialState || store.getState();
-    if (!req.initialState) {
-      req.initialState = preloadedState;
-    }
-
     const styleSheet = new ServerStyleSheet();
 
     const html = ReactDOMServer.renderToString(
       <StaticRouter location={req.url} context={context}>
         <StyleSheetManager sheet={styleSheet.instance}>
-          <Provider store={store}>
-            <Router />
-          </Provider>
+          <Router />
         </StyleSheetManager>
       </StaticRouter>
     );
@@ -54,7 +43,6 @@ export default function () {
           <title>${req.config.get('title')}</title>
           ${extractor.getLinkTags()}
           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous" />
-          <script id="stateData">window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')};</script>
           ${styleTags}
         </head>
         <body>

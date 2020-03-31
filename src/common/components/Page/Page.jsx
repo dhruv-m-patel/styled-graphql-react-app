@@ -7,6 +7,7 @@ import { faToggleOn } from '@fortawesome/free-solid-svg-icons/faToggleOn';
 import { faToggleOff } from '@fortawesome/free-solid-svg-icons/faToggleOff';
 import Container from 'react-bootstrap/Container';
 import DefaultHelmet from '../DefaultHelmet';
+import {faGithub, faGithubAlt} from '@fortawesome/free-brands-svg-icons'
 
 const DarkTheme = createGlobalStyle`
   body {
@@ -99,6 +100,14 @@ const AppHeader = styled.header`
   font-size: calc(10px + 2vmin);
 `;
 
+const GithubLink = styled.a`
+  color: unset;
+
+  &:hover {
+    color: unset;
+  }
+`;
+
 export default function Page({
   title,
   description,
@@ -145,12 +154,19 @@ export default function Page({
               onClick={switchToDarkMode}
             />
           </DarkModeTrigger>
+          &nbsp;&nbsp;
+          <GithubLink href="https://github.com/dhruv-m-patel/styled-graphql-react-app">
+            <FontAwesomeIcon
+              icon={faGithub}
+              size="2x"
+            />
+          </GithubLink>
         </TextRight>
         <App>
           <AppHeader>
             <AppLogo src="/images/logo.svg" alt="logo" />
-            <h2>Styled React App</h2>
-            <small>A universal react app with styled-component support.</small>
+            <h2>Styled GraphQL React App</h2>
+            <small>A universal react app with styled-component and GraphQL support.</small>
           </AppHeader>
           <br />
           <br />

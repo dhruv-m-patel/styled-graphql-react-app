@@ -12,8 +12,8 @@ export default function HomePage() {
           <h5>This starter-kit was built with:</h5>
           <ul>
             <li>React v16.8</li>
-            <li>Redux</li>
             <li>Styled Components</li>
+            <li>GraphQL</li>
             <li>React Router</li>
             <li>Webpack v4 with Hot Reloading</li>
             <li>Babel v7</li>
@@ -24,7 +24,7 @@ export default function HomePage() {
           </ul>
           <br />
           <br />
-          <Link to="/redux">View Example Page with Redux integration</Link>
+          <Link to="/redux">View Example Page with GraphQL integration</Link>
         </Col>
       </Row>
     </Page>

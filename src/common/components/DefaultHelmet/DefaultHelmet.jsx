@@ -17,6 +17,6 @@ DefaultHelmet.propTypes = {
 };
 
 DefaultHelmet.defaultProps = {
-  title: 'Styled React App',
-  description: 'A universal React app with styled-component support',
+  title: 'Styled GraphQL React App',
+  description: 'A universal React app with styled-component and GraphQL support',
 };
