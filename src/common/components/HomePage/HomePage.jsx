@@ -24,7 +24,7 @@ export default function HomePage() {
           </ul>
           <br />
           <br />
-          <Link to="/redux">View Example Page with GraphQL integration</Link>
+          <Link to="/graphql-example">View Example Page with GraphQL integration</Link>
         </Col>
       </Row>
     </Page>

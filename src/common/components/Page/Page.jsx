@@ -5,9 +5,9 @@ import styled, { createGlobalStyle, keyframes } from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faToggleOn } from '@fortawesome/free-solid-svg-icons/faToggleOn';
 import { faToggleOff } from '@fortawesome/free-solid-svg-icons/faToggleOff';
+import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import Container from 'react-bootstrap/Container';
 import DefaultHelmet from '../DefaultHelmet';
-import {faGithub, faGithubAlt} from '@fortawesome/free-brands-svg-icons'
 
 const DarkTheme = createGlobalStyle`
   body {
@@ -20,6 +20,10 @@ const DarkTheme = createGlobalStyle`
 
     & .text {
       color: var(--white);
+    }
+
+    & .table {
+      color: white;
     }
   }
 `;
@@ -34,6 +38,10 @@ const LightTheme = createGlobalStyle`
     }
 
     & .text {
+      color: black;
+    }
+
+    & .table {
       color: black;
     }
   }
